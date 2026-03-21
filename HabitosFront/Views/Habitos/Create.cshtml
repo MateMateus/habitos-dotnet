@@ -1,0 +1,93 @@
+@model HabitosFront.Models.HabitoViewModel
+
+@{
+    ViewData["Title"] = "Novo Hábito";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+
+        <!-- Cabeçalho da página -->
+        <div class="d-flex align-items-center mb-4">
+            <a href="/" class="btn btn-outline-secondary me-3 rounded-pill">
+                <i class="bi bi-arrow-left"></i>
+            </a>
+            <div>
+                <h2 class="fw-bold mb-0">Novo Hábito</h2>
+                <small class="text-muted">Crie um hábito para acompanhar</small>
+            </div>
+        </div>
+
+        <!-- Card com o formulário -->
+        <div class="card border-0 shadow-sm" style="border-radius: 20px;">
+            <div class="card-body p-4">
+
+                <!--
+                    asp-action — define para onde o formulário vai (action="Create")
+                    asp-controller — qual controller (HabitosController)
+                    method="post" — envia via POST (não aparece na URL)
+                -->
+                <form asp-action="Create" asp-controller="Habitos" method="post">
+
+                    @* Token de segurança gerado automaticamente pelo ASP.NET *@
+                    @Html.AntiForgeryToken()
+
+                    <!-- Campo: Nome -->
+                    <div class="mb-3">
+                        <label asp-for="Nome" class="form-label fw-semibold"></label>
+                        @* asp-for liga o campo ao campo "Nome" do ViewModel *@
+                        <input asp-for="Nome" class="form-control form-control-lg"
+                               placeholder="Ex: Beber 2L de água, Estudar 1 hora..." />
+                        @* asp-validation-for mostra a mensagem de erro de validação *@
+                        <span asp-validation-for="Nome" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Campo: Ícone -->
+                    <div class="mb-3">
+                        <label asp-for="Icone" class="form-label fw-semibold"></label>
+                        <input asp-for="Icone" class="form-control"
+                               placeholder="Cole um emoji: 💧 📚 🏋️ 🧘 🥗" />
+                        <div class="form-text">Use um emoji para identificar visualmente seu hábito</div>
+                    </div>
+
+                    <!-- Campo: Categoria -->
+                    <div class="mb-3">
+                        <label asp-for="Categoria" class="form-label fw-semibold"></label>
+                        <select asp-for="Categoria" class="form-select">
+                            <option value="Geral">🗂️ Geral</option>
+                            <option value="Saúde">❤️ Saúde</option>
+                            <option value="Estudos">📚 Estudos</option>
+                            <option value="Exercício">🏋️ Exercício</option>
+                            <option value="Alimentação">🥗 Alimentação</option>
+                            <option value="Bem-estar">🧘 Bem-estar</option>
+                            <option value="Produtividade">⚡ Produtividade</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo: Descrição -->
+                    <div class="mb-4">
+                        <label asp-for="Descricao" class="form-label fw-semibold"></label>
+                        <textarea asp-for="Descricao" class="form-control" rows="3"
+                                  placeholder="Descreva seu hábito (opcional)..."></textarea>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="d-flex gap-3">
+                        <button type="submit" class="btn btn-primary btn-lg flex-grow-1 rounded-pill">
+                            <i class="bi bi-plus-circle me-2"></i>Criar Hábito
+                        </button>
+                        <a href="/" class="btn btn-outline-secondary btn-lg rounded-pill">
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @* Scripts de validação do lado do cliente — do próprio ASP.NET *@
+    <partial name="_ValidationScriptsPartial" />
+}

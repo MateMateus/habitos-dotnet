@@ -1,0 +1,83 @@
+@model HabitosFront.Models.HabitoViewModel
+
+@{
+    ViewData["Title"] = "Editar Hábito";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+
+        <div class="d-flex align-items-center mb-4">
+            <a href="/" class="btn btn-outline-secondary me-3 rounded-pill">
+                <i class="bi bi-arrow-left"></i>
+            </a>
+            <div>
+                <h2 class="fw-bold mb-0">Editar Hábito</h2>
+                <small class="text-muted">Atualize as informações do hábito</small>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm" style="border-radius: 20px;">
+            <div class="card-body p-4">
+
+                <form asp-action="Edit" asp-controller="Habitos" method="post">
+                    @Html.AntiForgeryToken()
+
+                    @* Campo hidden — guarda o Id sem mostrar para o usuário *@
+                    <input asp-for="Id" type="hidden" />
+
+                    <div class="mb-3">
+                        <label asp-for="Nome" class="form-label fw-semibold"></label>
+                        <input asp-for="Nome" class="form-control form-control-lg" />
+                        <span asp-validation-for="Nome" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Icone" class="form-label fw-semibold"></label>
+                        <input asp-for="Icone" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Categoria" class="form-label fw-semibold"></label>
+                        <select asp-for="Categoria" class="form-select">
+                            <option value="Geral">🗂️ Geral</option>
+                            <option value="Saúde">❤️ Saúde</option>
+                            <option value="Estudos">📚 Estudos</option>
+                            <option value="Exercício">🏋️ Exercício</option>
+                            <option value="Alimentação">🥗 Alimentação</option>
+                            <option value="Bem-estar">🧘 Bem-estar</option>
+                            <option value="Produtividade">⚡ Produtividade</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Descricao" class="form-label fw-semibold"></label>
+                        <textarea asp-for="Descricao" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <!-- Checkbox para alterar o status diretamente na edição -->
+                    <div class="mb-4 form-check form-switch">
+                        <input asp-for="Concluido" class="form-check-input" type="checkbox" />
+                        <label asp-for="Concluido" class="form-check-label fw-semibold">
+                            Marcar como concluído
+                        </label>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <button type="submit" class="btn btn-warning btn-lg flex-grow-1 rounded-pill">
+                            <i class="bi bi-save me-2"></i>Salvar Alterações
+                        </button>
+                        <a href="/" class="btn btn-outline-secondary btn-lg rounded-pill">
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

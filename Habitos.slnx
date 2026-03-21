@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="HabitosAPI/HabitosAPI.csproj" />
+  <Project Path="HabitosFront/HabitosFront.csproj" />
+</Solution>
