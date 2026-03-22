@@ -1,5 +1,0 @@
-[phases.build]
-cmds = ["dotnet publish -c Release -o /app/out"]
-
-[start]
-cmd = ["dotnet /app/out/HabitosAPI.dll"]
