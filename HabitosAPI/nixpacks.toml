@@ -1,5 +1,12 @@
-[start]
-cmd = "dotnet out/HabitosAPI.dll"
-
 [phases.build]
-cmds = ["dotnet publish -c Release -o out"]
+cmds = ["dotnet publish -c Release -o /app/out"]
+
+[start]
+cmd = "dotnet /app/out/HabitosAPI.dll"
+```
+
+**2. Configura o start command direto no Railway também** (mais confiável):
+
+Clique no card **habitos-dotnet** → **Settings** → role até **Deploy** → em **Start Command** coloque:
+```
+dotnet /app/out/HabitosAPI.dll
