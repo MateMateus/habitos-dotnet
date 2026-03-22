@@ -75,7 +75,7 @@ public class HabitosController : ControllerBase
             return BadRequest(new { mensagem = "O nome do hábito é obrigatório." });
 
         // Define a data de criação agora
-        habito.CriadoEm = DateTime.Now;
+        habito.CriadoEm = DateTime.UtcNow;
 
         // Adiciona ao contexto (ainda não salvou no banco)
         _context.Habitos.Add(habito);

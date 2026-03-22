@@ -26,7 +26,7 @@ public class Habito
     public bool Concluido { get; set; } = false;
 
     // Data de criação — preenchida automaticamente
-    public DateTime CriadoEm { get; set; } = DateTime.Now;
+    public DateTime CriadoEm { get; set; } = DateTime.UtcNow;
 
     // Categoria do hábito para filtro
     // Ex: "Saúde", "Estudos", "Bem-estar"
