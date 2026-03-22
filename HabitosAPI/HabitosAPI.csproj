@@ -1,23 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <!-- Mudamos de net10.0 para net8.0 — versão estável e suportada no Railway -->
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- SQLite: usado localmente na sua máquina -->
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite"
-                      Version="9.*" />
-
-    <!-- PostgreSQL: usado na nuvem (Railway) -->
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"
-                      Version="9.*" />
-
-    <!-- Ferramentas de design do EF Core (migrations) -->
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design"
-                      Version="9.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.*" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.*" />
   </ItemGroup>
 
 </Project>

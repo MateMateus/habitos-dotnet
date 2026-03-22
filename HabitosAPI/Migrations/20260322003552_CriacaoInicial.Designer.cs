@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HabitosAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260322000355_CriacaoInicial")]
+    [Migration("20260322003552_CriacaoInicial")]
     partial class CriacaoInicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.14");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.25");
 
             modelBuilder.Entity("HabitosAPI.Models.Habito", b =>
                 {
