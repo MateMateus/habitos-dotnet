@@ -7,11 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.5">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.5" />
+    <!-- SQLite: usado localmente na sua máquina -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite"
+                      Version="9.*" />
+
+    <!-- PostgreSQL: usado na nuvem (Railway) -->
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"
+                      Version="9.*" />
+
+    <!-- Ferramentas de design do EF Core (migrations) -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design"
+                      Version="9.*" />
   </ItemGroup>
 
 </Project>
