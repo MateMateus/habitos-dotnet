@@ -1,3 +1,6 @@
+[phases.setup]
+nixPkgs = ["dotnet-sdk_8"]
+
 [phases.build]
 cmds = ["dotnet publish -c Release -o out"]
 
