@@ -43,6 +43,11 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Lê a porta do ambiente (Railway injeta a variável PORT automaticamente)
+// Se não existir, usa 5000 para desenvolvimento local
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+builder.WebHost.UseUrls($"http://+:{port}");
+
 // ─── BUILD ────────────────────────────────────────────────────────────────────
 var app = builder.Build();
 
